@@ -2,6 +2,11 @@ import { Button, Label, Col, FormGroup } from "reactstrap";
 import { Formik, Field, Form } from "formik";
 
 const ContactForm = () => {
+  const handleSubmit = (values, { resetForm }) => {
+    console.log("form values:", values);
+    console.log("in JSON format:", JSON.stringify(values));
+    resetForm();
+  };
   return (
     <Formik
       initialValues={{
@@ -13,6 +18,7 @@ const ContactForm = () => {
         contactType: "By Phone",
         feedback: "",
       }}
+      onSubmit={handleSubmit}
     >
       <Form>
         <FormGroup row>
@@ -23,7 +29,7 @@ const ContactForm = () => {
             <Field
               name="firstName"
               placeholder="First Name"
-              class="form-control"
+              className="form-control"
             />
           </Col>
         </FormGroup>
@@ -35,7 +41,7 @@ const ContactForm = () => {
             <Field
               name="lastName"
               placeholder="Last Name"
-              class="form-control"
+              className="form-control"
             />
           </Col>
         </FormGroup>
@@ -44,7 +50,11 @@ const ContactForm = () => {
             Phone
           </Label>
           <Col md="10">
-            <Field name="phoneNum" placeholder="Phone" class="form-control" />
+            <Field
+              name="phoneNum"
+              placeholder="Phone"
+              className="form-control"
+            />
           </Col>
         </FormGroup>
         <FormGroup row>
@@ -56,7 +66,7 @@ const ContactForm = () => {
               name="email"
               placeholder="Email"
               type="email"
-              class="form-control"
+              className="form-control"
             />
           </Col>
         </FormGroup>
@@ -66,7 +76,7 @@ const ContactForm = () => {
             May we contact you?
           </Label>
           <Col md="4">
-            <Field name="contactType" as="select" class="form-control">
+            <Field name="contactType" as="select" className="form-control">
               <option>By Phone</option>
               <option>By Email</option>
             </Field>
@@ -81,11 +91,17 @@ const ContactForm = () => {
               name="feedback"
               as="textarea"
               rows="12"
-              class="form-control"
+              className="form-control"
             />
           </Col>
         </FormGroup>
-        <FormGroup row></FormGroup>
+        <FormGroup row>
+          <Col md={{ size: 10, offset: 2 }}>
+            <Button type="submit" color="primary">
+              Send Feedback
+            </Button>
+          </Col>
+        </FormGroup>
       </Form>
     </Formik>
   );
