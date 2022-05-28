@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   promotionsArray: PROMOTIONS,
 };
+
 const promotionsSlice = createSlice({
   name: "promotions",
   initialState,
