@@ -35,6 +35,7 @@ const promotionsSlice = createSlice({
       state.promotionsArray = mapImageURL(action.payload);
     },
     [fetchPromotions.rejected]: (state, action) => {
+      console.log("action rejected", action);
       state.isLoading = false;
       state.errMsg = action.error ? action.error.message : "Fetch failed";
     },
