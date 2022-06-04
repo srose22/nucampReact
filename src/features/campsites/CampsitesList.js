@@ -7,7 +7,7 @@ import Loading from "../../components/Loading";
 
 const CampsitesList = () => {
   const campsites = useSelector(selectAllCampsites);
-  const isLoading = useSelector((state) => state.campsite.isLoading);
+  const isLoading = useSelector((state) => state.campsites.isLoading);
   const errMsg = useSelector((state) => state.campsites.errMsg);
 
   if (isLoading) {
